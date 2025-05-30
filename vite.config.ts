@@ -47,8 +47,8 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    define: {
-      'process.env.API_URL': isProduction ? '' : 'http://localhost:3001'
+    env: {
+      API_URL: isProduction ? '' : 'http://localhost:3001'
     }
   };
 });
