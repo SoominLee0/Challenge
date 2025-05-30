@@ -30,17 +30,12 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: path.resolve(import.meta.dirname, "dist"),
       emptyOutDir: true,
-      assetsDir: 'assets',
       rollupOptions: {
         input: {
           main: path.resolve(import.meta.dirname, "client", "index.html"),
           server: path.resolve(import.meta.dirname, "server", "index.ts"),
         },
         external: ['fsevents', '../pkg'],
-        treeshake: {
-          moduleSideEffects: false,
-          propertyReadSideEffects: false,
-        },
         output: {
           format: 'esm',
           sourcemap: true,
