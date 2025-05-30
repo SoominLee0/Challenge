@@ -34,6 +34,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           main: path.resolve(import.meta.dirname, "client", "index.html"),
+          server: path.resolve(import.meta.dirname, "server", "index.ts"),
         },
       },
     },
