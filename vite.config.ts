@@ -36,7 +36,15 @@ export default defineConfig(({ mode }) => {
           main: path.resolve(import.meta.dirname, "client", "index.html"),
           server: path.resolve(import.meta.dirname, "server", "index.ts"),
         },
-        external: ['fsevents', '../pkg']
+        external: ['fsevents', '../pkg'],
+        treeshake: {
+          moduleSideEffects: false,
+          propertyReadSideEffects: false,
+        },
+        output: {
+          format: 'esm',
+          sourcemap: true,
+        },
       },
     },
     base: '/',
