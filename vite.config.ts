@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
     },
     root: path.resolve(import.meta.dirname, "client"),
     build: {
-      outDir: path.resolve(import.meta.dirname, "dist/public"),
+      outDir: path.resolve(import.meta.dirname, "distpublic"),
       emptyOutDir: true,
       assetsDir: 'assets',
       rollupOptions: {
@@ -42,10 +42,13 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       proxy: {
         '/api': {
-          target: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001',
+          target: 'http://localhost:3001',
           changeOrigin: true,
         },
       },
     },
+    define: {
+      'process.env.API_URL': isProduction ? '' : 'http://localhost:3001'
+    }
   };
 });
