@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: isProduction ? '/' : '/',
+    base: isProduction ? '/challenge-git-main-soominlees-projects.vercel.app/' : '/',
     server: {
       port: 3000,
       proxy: {
