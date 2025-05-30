@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         external: ['fsevents']
       },
     },
-    base: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : '/',
+    base: '/',
     server: {
       port: 3000,
       proxy: {
