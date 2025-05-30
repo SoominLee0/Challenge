@@ -42,13 +42,13 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       proxy: {
         '/api': {
-          target: 'http://localhost:3001',
+          target: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : 'http://localhost:3001',
           changeOrigin: true,
         },
       },
     },
     env: {
-      API_URL: isProduction ? '' : 'http://localhost:3001'
+      API_URL: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : 'http://localhost:3001'
     }
   };
 });
