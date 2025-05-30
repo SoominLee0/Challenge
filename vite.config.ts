@@ -30,22 +30,30 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: path.resolve(import.meta.dirname, "dist"),
       emptyOutDir: true,
-      assetsDir: 'assets',
       rollupOptions: {
         input: {
           main: path.resolve(import.meta.dirname, "client", "index.html"),
+          server: path.resolve(import.meta.dirname, "server", "index.ts"),
+        },
+        external: ['fsevents', '../pkg'],
+        output: {
+          format: 'esm',
+          sourcemap: true,
         },
       },
     },
-    base: isProduction ? '/' : '/',
+    base: '/',
     server: {
       port: 3000,
       proxy: {
         '/api': {
-          target: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001',
+          target: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : 'http://localhost:3001',
           changeOrigin: true,
         },
       },
     },
+    env: {
+      API_URL: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : 'http://localhost:3001'
+    }
   };
 });
