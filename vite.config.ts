@@ -34,6 +34,9 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: 'https://challenge-git-main-soominlees-projects.vercel.app',
           changeOrigin: true,
+          secure: true,
+          ws: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
         },
       },
     },
