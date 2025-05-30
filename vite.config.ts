@@ -36,9 +36,10 @@ export default defineConfig(({ mode }) => {
           main: path.resolve(import.meta.dirname, "client", "index.html"),
           server: path.resolve(import.meta.dirname, "server", "index.ts"),
         },
+        external: ['fsevents']
       },
     },
-    base: isProduction ? '/challenge-git-main-soominlees-projects.vercel.app/' : '/',
+    base: isProduction ? 'https://challenge-git-main-soominlees-projects.vercel.app' : '/',
     server: {
       port: 3000,
       proxy: {
