@@ -27,7 +27,22 @@ export default defineConfig(({ mode }) => {
         }
       },
     },
-    base: '/',
+    base: 'https://challenge-git-main-soominlees-projects.vercel.app',
+    server: {
+      port: 3000,
+      proxy: {
+        '/api': {
+          target: 'https://challenge-git-main-soominlees-projects.vercel.app',
+          changeOrigin: true,
+          secure: true,
+          ws: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        },
+      },
+    }
+    env: {
+      VITE_API_URL: 'https://challenge-git-main-soominlees-projects.vercel.app'
+    }
     server: {
       port: 3000,
       proxy: {
