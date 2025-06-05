@@ -3,21 +3,24 @@
   "builds": [
     {
       "src": "client/index.html",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/public"
-      }
+      "use": "@vercel/static-build"
     },
     {
-      "src": "server/api.ts",
+      "src": "server/index.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/api.ts"
+      "dest": "/server/index.ts"
     },
+    {
+      "src": "/(.*)",
+      "dest": "/client/index.html"
+    }
+  ]
+}
     {
       "src": "/(.*)",
       "dest": "/"
